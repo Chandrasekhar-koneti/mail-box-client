@@ -23,12 +23,14 @@
     padding: 0.25rem;
   }
 
+  .button{
+    align-items: center;
+  }
   .btn{
     background-color:rgb(207, 250, 235);
-    border:1px solid;
-    border-radius: 0.5rem;
+    margin-left: 30rem;
     margin-top: 0.5rem;
-    margin-left:30rem;
     width: 20%;
-
+    border: 1px solid;
+    border-radius: 0.5rem;
   }
