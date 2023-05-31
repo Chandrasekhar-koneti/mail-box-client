@@ -3,13 +3,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SignUp from "./components/Form/Signup";
 import SignIn from "./components/Form/Signin";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Dummy from "./components/Form/Dummy";
+import Welcome from "./components/Pages/Welcome";
+import Mail from "./components/Pages/Mail";
+import Inbox from "./components/Pages/Inbox";
 
 function App() {
   const router=createBrowserRouter([
     {path:'/', element:<SignIn />},
     {path:'/signup',element:<SignUp />},
-    {path:'/dummy',element:<Dummy />}
+    {path:'/welcome',element:<Welcome />},
+    {path:'/Mail',element:<Mail /> },
+    {path:'/Inbox',element:<Inbox />}
   ])
   return (
     <div>

@@ -49,7 +49,7 @@ const SignIn=()=>{
         }
     }).then((data)=>{
         console.log('login done')
-        History('/dummy')
+        History('/welcome')
 
     }).catch((err)=>{
         alert(err.message)

@@ -1,0 +1,9 @@
+.nav{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.nav header{
+    text-align: left;
+} 
