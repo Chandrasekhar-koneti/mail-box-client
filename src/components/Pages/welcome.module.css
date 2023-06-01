@@ -1,10 +1,13 @@
 .composebtn{
-    border-radius: 1rem;
-    background-color: rgb(181, 228, 247);
-    border-color:skyblue;
+    margin-top:0.5rem ;
+    border-radius: 2rem;
+    background-color:white;
+    border: 1px solid #ccc;
+    border-color:whitesmoke;
     font-size:x-large;
     margin-left: 0.5rem;
     color: rgb(97, 94, 94);
+    /* border-block-end-color: rgb(138, 136, 136); */
 }
 
 .inbox{
@@ -12,4 +15,6 @@
     margin-top: 1rem;
     margin-left: 1rem;
     font-size:x-large;
+    color: gray;
+    font-weight: bold;
 }

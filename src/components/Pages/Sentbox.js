@@ -3,8 +3,10 @@ import Nav from "../Form/Nav"
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { mailActions } from "../Store/mailStore-slice";
+import classes from './sentbox.module.css'
+import Header from "./Header";
 
-const Inbox=()=>{
+const Sentbox=()=>{
 
     const dispatch = useDispatch();
     const senderMail = localStorage.getItem('email');
@@ -49,22 +51,28 @@ const Inbox=()=>{
     return(
         <div>
             <Nav />
-            <div>
+            <Header />
+            <h3 className={classes.sentbox}>SentBox</h3>
+            <div className={classes.container}>
+            <div className={classes.sentSectionHeader}>
+            <h2>primary</h2>
+            </div>
+
                 {mail.length !==0 && (
-                    <div>
-                        <h1>InBox</h1>
+                    <div className={classes.itemList}>
                         {mail.map((item)=> (
-                            <li key={item.id} id={item.id}>
-                                <span>{item.mail}</span>
-                                <span>{item.subject}</span>
-                                <span>{item.message}</span>
+                            <li key={item.id} id={item.id} className={classes.arrayItem}>
+                                <span className={classes.mailTo}> To:<h3>{item.mail}</h3></span>
+                                <span className={classes.mailSubject}>{item.subject}</span>
+                                <span className={classes.mailBody}>{item.message}</span>
                             </li>
                         ))}
                     </div>
                 )}
+
             </div>
         </div>
     )
 }
 
-export default Inbox
+export default Sentbox

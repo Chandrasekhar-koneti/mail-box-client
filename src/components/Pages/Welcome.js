@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import Nav from "../Form/Nav"
 import classes from './welcome.module.css'
+import Header from "./Header"
 
 const Welcome=()=>{
     const History=useNavigate()
@@ -10,11 +11,15 @@ const Welcome=()=>{
     return(
         <div>
             <Nav />
+            <Header />
             <div>
                 <button className={classes.composebtn} onClick={createMailHandler}>+Compose</button>
             </div>
+            <div>
+                <Link to='/inbox' className={classes.inbox}>Inbox</Link>
+            </div>
             <div >
-                <Link className={classes.inbox} to='/Inbox'>Inbox</Link>
+                <Link className={classes.inbox} to='/sentbox'>Sent</Link>
             </div>
         </div>
     )

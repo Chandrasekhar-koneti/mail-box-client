@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom"
 const Mail=()=>{
     const History=useNavigate()
     const dispatch=useDispatch()
-    const editorState=EditorState.createEmpty()
+    // const editorState=EditorState.createEmpty()
     let [mailingTo, setMailingTo] =useState('')
     const[messageStore, setMessageStore]=useState()
     const [input, setInput] = useState([]);
@@ -39,8 +39,11 @@ const Mail=()=>{
 
   let message;
 
-    const onEditorStateChange = (event) => {
-      message=event.getCurrentContent().getPlainText()
+  const[editorState,setEditoState]=useState(EditorState.createEmpty())
+
+    const onEditorStateChange = (editorState) => {
+      setEditoState(editorState)
+      // message=event.getCurrentContent().getPlainText()
       setMessageStore(message)
       console.log(message)
   };
@@ -81,7 +84,7 @@ const Mail=()=>{
     .then((data) => {
       console.log(data.name);
       alert("Mail sent successfully...")
-      History('/Inbox');
+      History('/sentbox');
     })
     .catch((err) => {
       alert(err);
