@@ -1,6 +1,6 @@
 import { useRef, useState } from "react"
 import { Editor } from "react-draft-wysiwyg"
-import Nav from "../Form/Nav"
+import Nav from "../Main/Nav"
 import { mailActions } from "../Store/mailStore-slice"
 import { useDispatch } from "react-redux"
 import { EditorState } from "draft-js"
@@ -44,8 +44,8 @@ const Mail=()=>{
     const onEditorStateChange = (editorState) => {
       setEditoState(editorState)
       // message=event.getCurrentContent().getPlainText()
-      setMessageStore(message)
-      console.log(message)
+      setMessageStore(editorState)
+      console.log(messageStore)
   };
 
   const sendMailHandler = (e) => {

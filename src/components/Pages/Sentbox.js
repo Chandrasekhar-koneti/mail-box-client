@@ -1,10 +1,11 @@
 import { useDispatch } from "react-redux";
-import Nav from "../Form/Nav"
+import Nav from "../Main/Nav"
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { mailActions } from "../Store/mailStore-slice";
 import classes from './sentbox.module.css'
-import Header from "./Header";
+import Header from "../Main/Header";
+import Sidebar from "../Main/Sidebar";
 
 const Sentbox=()=>{
 
@@ -50,26 +51,35 @@ const Sentbox=()=>{
 
     return(
         <div>
+            <div>
             <Nav />
             <Header />
+            </div>
+
             <h3 className={classes.sentbox}>SentBox</h3>
+            <div style={{display:'flex'}}>
+
+                <Sidebar />
             <div className={classes.container}>
             <div className={classes.sentSectionHeader}>
             <h2>primary</h2>
             </div>
-
-                {mail.length !==0 && (
-                    <div className={classes.itemList}>
-                        {mail.map((item)=> (
-                            <li key={item.id} id={item.id} className={classes.arrayItem}>
-                                <span className={classes.mailTo}> To:<h3>{item.mail}</h3></span>
-                                <span className={classes.mailSubject}>{item.subject}</span>
-                                <span className={classes.mailBody}>{item.message}</span>
-                            </li>
+            {mail.length !== 0 && (
+          <div className={classes.itemList}>
+        
+            {mail.map((item) => (
+              <li key={item.id} id={item.id} className={classes.arrayItem}>
+                <span className={classes.mailTo}>
+                    To :
+                    <h3>{item.mail}</h3></span>
+                <span className={classes.mailSubject}>{item.subject}</span>
+                <span className={classes.mailBody}>{item.message}</span>
+              </li>
                         ))}
                     </div>
                 )}
 
+            </div>
             </div>
         </div>
     )

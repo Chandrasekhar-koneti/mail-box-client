@@ -12,6 +12,7 @@
     color:rgb(233, 151, 151);
     font-family: 'Times New Roman', Times, serif;
     font-weight: bolder;
+    margin-left: 2rem;
 }
 .sentSectionHeader{
     position:sticky;
