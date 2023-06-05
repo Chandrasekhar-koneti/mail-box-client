@@ -9,7 +9,7 @@ import { BsTrash } from "react-icons/bs";
 import mail from '../images/mail.jpg'
 
 
-const ViewMail = (props) => {
+const ViewMailSentBox = (props) => {
     console.log(props.item)
     const params = useParams();
     console.log(params)
@@ -29,14 +29,14 @@ const ViewMail = (props) => {
 
     const deleteItem = (id) => {
         console.log('deleting item', id)
-        fetch(`https://mail-box-client-71c38-default-rtdb.firebaseio.com/mail/${usermail}Inbox/${id}.json`,
+        fetch(`https://mail-box-client-71c38-default-rtdb.firebaseio.com/mail/${usermail}Sentbox/${id}.json`,
         {
             method:'DELETE'
         }).then((response)=>{
             response.json().then((res)=>{
                 console.log('deleting item');
                 alert('Are you sure? ')
-                History('/welcome')
+                History('/sentbox')
                 console.log('ress is', res)
 
             })
@@ -77,4 +77,4 @@ const ViewMail = (props) => {
   )
 }
 
-export default ViewMail
+export default ViewMailSentBox

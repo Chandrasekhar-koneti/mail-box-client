@@ -45,8 +45,11 @@
     height: 50px;
     cursor: pointer;
     width: 100%;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
+    word-wrap: break-word;
+    text-decoration: none;
+    color: black;
 }
 
 .mailTo{
@@ -63,15 +66,20 @@
     color:rgb(11, 9, 9);
     font-weight: normal;
     text-overflow: ellipsis;
+
 }
 .mailSubject{
     font-size: 15px;
     color:rgb(11, 9, 9);
     text-overflow: ellipsis;
+    margin-right: 3rem;
+    margin-left:3rem;
 
 }
 .mailBody{
     font-size: 15px;
     color:rgb(11, 9, 9);
-    text-overflow: ellipsis;
+    text-overflow:ellipsis;
+    /* display: inline-flex; */
+     /* margin-right:10rem; */
 }

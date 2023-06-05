@@ -9,6 +9,7 @@ import Sentbox from "./components/Pages/Sentbox";
 import { useSelector } from "react-redux";
 import Inbox from "./components/Pages/Inbox";
 import ViewMail from "./components/Pages/Viewmail";
+import ViewMailSentBox from "./components/Pages/Viewmailsentbox";
 
 function App() {
   const router=createBrowserRouter([
@@ -17,8 +18,8 @@ function App() {
     {path:'/welcome',element:<Inbox />},
     {path:'/mail',element:<Mail /> },
     {path:'/sentbox',element:<Sentbox />},
-    {path:'welcome/viewmail:id',element:<ViewMail />}
-    // {path:'/inbox',element:<Inbox />}
+    {path:'/welcome/viewmail/:id',element:<ViewMail />},
+    {path:'/sentbox/viewmail/:id',element:<ViewMailSentBox />}
   ])
   const isLogin = useSelector(state => state.auth.isLogin)
   console.log('isLogin',isLogin);

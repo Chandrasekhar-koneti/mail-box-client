@@ -17,24 +17,23 @@ const Mail=()=>{
     let [mailingTo, setMailingTo] =useState('')
     const[messageStore, setMessageStore]=useState()
     const [input, setInput] = useState([]);
+
     const regex = /[`@.`]/g;
-
-
-    let mailTo = mailingTo.replace(regex, '');
-  console.log('mailing to: ', mailTo)
-
     const sendMailToref = useRef();
     const subjectref = useRef();
 
     const senderMail = localStorage.getItem('email');
 
+    let mailTo = mailingTo.replace(regex, '');
+    console.log('mailing to: ', mailTo)
+   
     let usermail;
 
   if (senderMail != null) {
 
     usermail = senderMail.replace(regex, '');
 
-    console.log(usermail);
+    // console.log(usermail);
   }
 
   let message;
@@ -43,11 +42,12 @@ const Mail=()=>{
 
     const onEditorStateChange = (editorState) => {
       setEditoState(editorState)
-      // message=event.getCurrentContent().getPlainText()
-      setMessageStore(editorState)
-      console.log(messageStore)
+      message=editorState.getCurrentContent().getPlainText()
+      setMessageStore(message)
+      // console.log(messageStore)
   };
 
+  
   const sendMailHandler = (e) => {
     e.preventDefault();
     const receiverMail = sendMailToref.current.value;
@@ -60,6 +60,8 @@ const Mail=()=>{
         messageStore
       }
     setMailingTo(receiverMail)
+
+   
     console.log('mailing details: ', mailDetails)
     sendMail(mailDetails);
     fetch(`https://mail-box-client-71c38-default-rtdb.firebaseio.com/mail/${usermail}Sentbox.json`,
@@ -68,7 +70,7 @@ const Mail=()=>{
       body: JSON.stringify({
         mail:receiverMail,
         subject: subject,
-        message:message
+        message:messageStore
       }),
       headers :{'Content-Type': 'application/json'}
     }) .then((resp) => {
@@ -94,10 +96,9 @@ const Mail=()=>{
    
 
   const existingInput = [...input];
-
-  
   
   async function sendMail(mailDetails) {
+    console.log(mailTo)
       try{
         const response = await fetch(`https://mail-box-client-71c38-default-rtdb.firebaseio.com/mail/${mailTo}Inbox.json`,{
           method: 'POST',

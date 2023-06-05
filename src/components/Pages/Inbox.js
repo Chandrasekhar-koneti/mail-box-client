@@ -37,9 +37,10 @@ const Inbox=()=>{
     let responseData
     const listOfMails=[]
 
-    axios.get(`https://mail-box-client-71c38-default-rtdb.firebaseio.com/mail/${usermail}Inbox.json`)
+    axios.get(`https://mail-box-client-71c38-default-rtdb.firebaseio.com/mail/Inbox.json`)
     .then((response)=>{
         responseData=response.data
+        console.log('respone is',responseData)
         if(responseData !== null){
             Object.entries(responseData).forEach((item)=>{
                 listOfMails.push({
@@ -139,15 +140,13 @@ const Inbox=()=>{
 <div className={classes['emailList-list']}>
 {items.map((item) => (
     <Link
-      to={{
-        pathname: `/welcome/veiwmail/${item.id}`,
-        state: {
+    to={`/welcome/viewmail/:${item.id}`}
+        state={{
           senderMail: item.mail,
           subject: item.subject,
           message: item.message,
          id: item.id,
-        },
-      }}
+        }}
 
       key={item.id}
       id={item.id}

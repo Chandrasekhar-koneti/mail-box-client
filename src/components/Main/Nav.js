@@ -6,7 +6,7 @@ import { authActions } from "../Store/auth-slice"
 
 const Nav=()=>{
 
-    const mail=localStorage.getItem('userMail')
+    const mail=localStorage.getItem('email')
     const dispatch=useDispatch()
     const History=useNavigate()
     const logoutHandler=()=>{
@@ -21,6 +21,7 @@ const Nav=()=>{
                 <h2><header>Welcome to Mail Box</header></h2>
                 <Button variant='primary' onClick={logoutHandler}>Logout</Button>
             </nav>
+            <p>loggedInUser:{mail}</p>
             <hr></hr>
         </div>
     )
